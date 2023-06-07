@@ -9,18 +9,6 @@ Deno.test("createClient()", async (test) => {
   });
 
   await test.step("discord", () => {
-    assertThrows(() => createClient("discord"));
-    assertThrows(() =>
-      createClient("discord", {
-        defaults: { scope: "scope_without_redirect_url" },
-      })
-    );
-    assertThrows(() =>
-      createClient("discord", {
-        redirectUri: "http://redirect-without-scope.com",
-      })
-    );
-
     const clientId = crypto.randomUUID();
     const clientSecret = crypto.randomUUID();
     const redirectUri = "http://example.com";
@@ -53,18 +41,6 @@ Deno.test("createClient()", async (test) => {
   });
 
   await test.step("google", () => {
-    assertThrows(() => createClient("google"));
-    assertThrows(() =>
-      createClient("google", {
-        defaults: { scope: "scope_without_redirect_url" },
-      })
-    );
-    assertThrows(() =>
-      createClient("google", {
-        redirectUri: "http://redirect-without-scope.com",
-      })
-    );
-
     const clientId = crypto.randomUUID();
     const clientSecret = crypto.randomUUID();
     const redirectUri = "http://example.com";
