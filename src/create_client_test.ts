@@ -9,17 +9,16 @@ Deno.test("createClient()", async (test) => {
   });
 
   await test.step("discord", () => {
-    assertThrows(() => createClient("discord"));
-    assertThrows(() =>
-      createClient("discord", {
-        defaults: { scope: "scope_without_redirect_url" },
-      })
-    );
-    assertThrows(() =>
-      createClient("discord", {
-        redirectUri: "http://redirect-without-scope.com",
-      })
-    );
+    // @ts-expect-error missing required parameters
+    createClient("discord");
+    // @ts-expect-error missing required parameters
+    createClient("discord", {
+      defaults: { scope: "scope_without_redirect_url" },
+    });
+    // @ts-expect-error missing required parameters
+    createClient("discord", {
+      redirectUri: "http://redirect-without-scope.com",
+    });
 
     const clientId = crypto.randomUUID();
     const clientSecret = crypto.randomUUID();
@@ -53,17 +52,16 @@ Deno.test("createClient()", async (test) => {
   });
 
   await test.step("google", () => {
-    assertThrows(() => createClient("google"));
-    assertThrows(() =>
-      createClient("google", {
-        defaults: { scope: "scope_without_redirect_url" },
-      })
-    );
-    assertThrows(() =>
-      createClient("google", {
-        redirectUri: "http://redirect-without-scope.com",
-      })
-    );
+    // @ts-expect-error missing required parameters
+    createClient("google");
+    // @ts-expect-error missing required parameters
+    createClient("google", {
+      defaults: { scope: "scope_without_redirect_url" },
+    });
+    // @ts-expect-error missing required parameters
+    createClient("google", {
+      redirectUri: "http://redirect-without-scope.com",
+    });
 
     const clientId = crypto.randomUUID();
     const clientSecret = crypto.randomUUID();
